@@ -143,6 +143,11 @@
     grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
+  @media (max-width: 480px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
   .form-row.full { grid-template-columns: 1fr; }
 
   .field {
@@ -330,9 +335,21 @@
     margin-bottom: 14px;
     align-items: center;
   }
-  .date-filter input[type=date] {
+  .date-filter-wrap {
     flex: 1;
-    padding: 9px 10px;
+    position: relative;
+  }
+  .date-filter-icon {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px;
+    pointer-events: none;
+  }
+  .date-filter input[type=date] {
+    width: 100%;
+    padding: 9px 10px 9px 34px;
     border: 1.5px solid var(--border);
     border-radius: var(--radius-sm);
     font-family: 'DM Sans', sans-serif;
@@ -663,7 +680,10 @@
       <input type="text" id="search-input" placeholder="Cari nama, tempat, acara..." oninput="filterData()">
     </div>
     <div class="date-filter">
-      <input type="date" id="filter-tgl" onchange="filterData()">
+      <div class="date-filter-wrap">
+        <span class="date-filter-icon">📅</span>
+        <input type="date" id="filter-tgl" onchange="filterData()">
+      </div>
       <button class="btn-clear-date" onclick="clearDateFilter()">Reset</button>
     </div>
     <div class="data-count" id="data-count"></div>
