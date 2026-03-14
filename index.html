@@ -141,12 +141,7 @@
   .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-  @media (max-width: 480px) {
-    .form-row {
-      grid-template-columns: 1fr;
-    }
+    gap: 10px;
   }
   .form-row.full { grid-template-columns: 1fr; }
 
@@ -155,6 +150,7 @@
     flex-direction: column;
     gap: 5px;
     margin-bottom: 12px;
+    min-width: 0; /* penting: cegah overflow di grid */
   }
   .field label {
     font-size: 11px;
@@ -162,9 +158,12 @@
     letter-spacing: 0.8px;
     text-transform: uppercase;
     color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .field input, .field textarea, .field select {
-    padding: 10px 12px;
+    padding: 10px 10px;
     border: 1.5px solid var(--border);
     border-radius: var(--radius-sm);
     font-family: 'DM Sans', sans-serif;
@@ -173,6 +172,15 @@
     background: var(--bg);
     transition: border-color 0.2s, box-shadow 0.2s;
     -webkit-appearance: none;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+  @media (max-width: 420px) {
+    .field input, .field textarea, .field select {
+      font-size: 13px;
+      padding: 9px 8px;
+    }
   }
   .field input:focus, .field textarea:focus, .field select:focus {
     outline: none;
