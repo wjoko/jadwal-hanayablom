@@ -1067,7 +1067,7 @@
     currentEditRow = d._row;
     document.getElementById('edit-row').value = d._row;
 
-    document.getElementById('e-tgl').value = d.Tgl ? tglToIso(d.Tgl) : '';
+    document.getElementById('e-tgl').value = d.Tgl ? tglStrToIsoSafe(d.Tgl) : '';
     const eAcara = document.getElementById('e-acara');
     eAcara.value = d.Acara || '';
     if (!eAcara.value) eAcara.selectedIndex = 0;
